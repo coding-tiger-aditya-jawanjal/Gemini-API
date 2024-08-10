@@ -17,12 +17,12 @@ const ChatArea = ({ res, req, loading }) => {
 						className=" w-14 h-14 rounded-lg mb-5 animate-spin"
 						loading="lazy"
 					/>
-					<Skeleton count={5} baseColor="red" className="max-w-[70%]" />
+					<Skeleton count={5} baseColor="red" className="max-w-[80%]" />
 				</div>
 			) : (
 				<p
 					className={`rounded-lg text-gray-100 bg-gray-700
-					max-w-[70%] p-3 font-serif`}
+					max-w-[80%] p-3 font-serif`}
 					dangerouslySetInnerHTML={{ __html: res }}
 				></p>
 			)}

@@ -72,7 +72,7 @@ const App = () => {
 
 	return (
 		<div
-			className={`relative w-full h-screen max-h-screen min-h-screen ${
+			className={`relative w-full h-screen max-h-[90vh] min-h-[80vh] ${
 				lightMode ? "bg-gray-100 text-black" : "bg-gray-800 text-white"
 			} flex justify-center overflow-x-hidden`}
 		>
