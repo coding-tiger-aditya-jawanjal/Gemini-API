@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { IoSend } from "react-icons/io5";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { MdDarkMode, MdOutlineDarkMode } from "react-icons/md";
@@ -68,7 +68,7 @@ const App = () => {
 			setLoading(false);
 			setInputDisabled(false);
 		}
-	}, [searchText, formatResponse, setSingleChat, setShowChat, setChats]);
+	}, [ searchText, formatResponse, setSingleChat, setShowChat, setChats ]);
 
 	return (
 		<div
@@ -76,9 +76,9 @@ const App = () => {
 				lightMode ? "bg-gray-100 text-black" : "bg-gray-800 text-white"
 			} flex justify-center overflow-hidden`}
 		>
-			<div className="max-w-5xl w-[90%] flex flex-col gap-20 my-10">
-				<div className="flex flex-col justify-between h-[95%] ">
-					<div className="flex flex-col gap-10 overflow-y-auto overflow-x-hidden">
+			<div className="max-w-5xl w-[90%] flex flex-col gap-5 my-5 h-full">
+				<div className="flex flex-col h-full">
+					<div className="flex flex-col gap-5 overflow-y-auto flex-grow">
 						<div className="flex flex-col gap-2 sm:gap-5 text-4xl sm:text-5xl lg:text-7xl font-bold font-sans">
 							<h2>Hello, There!</h2>
 							<h3>How Can I Help You?</h3>
@@ -93,32 +93,31 @@ const App = () => {
 							<BoxArea />
 						)}
 					</div>
-					{/* good  */}
-					<div
-						className={`flex justify-start items-center gap-5 w-full ${
-							showChat ? "mt-10 -mb-14 fixed bottom-16" : "fixed bottom-5"
-						}`}
-					>
-						<input
-							type="text"
-							className={`${
-								lightMode ? "border-2 border-black" : "border-none"
-							} rounded-lg px-5 outline-none font-medium w-full max-w-[60%] h-14 text-black`}
-							value={searchText}
-							onChange={(e) => setSearchText(e.target.value)}
-							onKeyUp={(e) => e.key === "Enter" && handleSearch()}
-							disabled={inputDisabled}
-						/>
-						<div className="flex items-center gap-5 cursor-pointer">
-							{lightMode ? (
-								<MdDarkMode size={32} onClick={handleToggleLightMode} />
-							) : (
-								<MdOutlineDarkMode size={32} onClick={handleToggleLightMode} />
-							)}
-							<IoSend size={32} onClick={handleSearch} />
+					<div className=" h-32 w-full bg-gray-800 fixed bottom-0 left-0 px-3 ">
+						<div className="flex justify-center items-center gap-5 py-10">
+							<input
+								type="text"
+								className={`${
+									lightMode ? "border-2 border-black" : "border-none"
+								} rounded-lg px-5 outline-none font-medium w-[70%] sm:w-[80%] max-w-4xl h-14 text-black`}
+								value={searchText}
+								onChange={(e) => setSearchText(e.target.value)}
+								onKeyUp={(e) => e.key === "Enter" && handleSearch()}
+								disabled={inputDisabled}
+							/>
+							<div className="flex items-center gap-5 cursor-pointer">
+								{lightMode ? (
+									<MdDarkMode size={32} onClick={handleToggleLightMode} />
+								) : (
+									<MdOutlineDarkMode
+										size={32}
+										onClick={handleToggleLightMode}
+									/>
+								)}
+								<IoSend size={32} onClick={handleSearch} />
+							</div>
 						</div>
 					</div>
-					{/* good  */}
 				</div>
 			</div>
 			<GiHamburgerMenu
@@ -132,26 +131,3 @@ const App = () => {
 };
 
 export default App;
-
-{
-	/* <div className="flex justify-center sm:justify-start items-center gap-5 mt-5">
-	<input
-		type="text"
-		className={`${
-			lightMode ? "border-2 border-black" : "border-none"
-		} rounded-lg px-5 outline-none font-medium w-full max-w-[80%] h-14 text-black`}
-		value={searchText}
-		onChange={(e) => setSearchText(e.target.value)}
-		onKeyUp={(e) => e.key === "Enter" && handleSearch()}
-		disabled={inputDisabled}
-	/>
-	<div className="flex items-center gap-5 cursor-pointer">
-		{lightMode ? (
-			<MdDarkMode size={32} onClick={handleToggleLightMode} />
-		) : (
-			<MdOutlineDarkMode size={32} onClick={handleToggleLightMode} />
-		)}
-		<IoSend size={32} onClick={handleSearch} />
-	</div>
-</div>; */
-}
