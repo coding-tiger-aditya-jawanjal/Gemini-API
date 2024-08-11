@@ -4,7 +4,7 @@ import Logo from "/logo.avif";
 
 const ChatArea = ({ res, req, loading }) => {
 	return (
-		<div className="flex flex-col gap-10 p-5 text-lg">
+		<div className="flex flex-col gap-10 p-5 sm:text-lg">
 			<p
 				className=" rounded-lg bg-gray-700 max-w-[50%] p-3 text-gray-100 font-medium self-end"
 				dangerouslySetInnerHTML={{ __html: req }}

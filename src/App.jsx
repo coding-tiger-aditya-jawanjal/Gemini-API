@@ -72,14 +72,14 @@ const App = () => {
 
 	return (
 		<div
-			className={`relative w-full h-screen max-h-[90vh] min-h-[80vh] ${
+			className={`relative w-full h-screen max-h-screen min-h-screen ${
 				lightMode ? "bg-gray-100 text-black" : "bg-gray-800 text-white"
-			} flex justify-center overflow-x-hidden`}
+			} flex justify-center overflow-hidden`}
 		>
 			<div className="max-w-5xl w-[90%] flex flex-col gap-20 my-10">
-				<div className="flex flex-col justify-between h-full">
-					<div className="flex flex-col gap-10 overflow-y-auto overflow-x-hidden myscroll">
-						<div className="flex flex-col gap-2 sm:gap-5 text-3xl sm:text-5xl lg:text-7xl font-bold font-sans">
+				<div className="flex flex-col justify-between h-[95%] ">
+					<div className="flex flex-col gap-10 overflow-y-auto overflow-x-hidden">
+						<div className="flex flex-col gap-2 sm:gap-5 text-4xl sm:text-5xl lg:text-7xl font-bold font-sans">
 							<h2>Hello, There!</h2>
 							<h3>How Can I Help You?</h3>
 						</div>
@@ -93,12 +93,17 @@ const App = () => {
 							<BoxArea />
 						)}
 					</div>
-					<div className="flex justify-center sm:justify-start items-center gap-5 mt-5">
+					{/* good  */}
+					<div
+						className={`flex justify-start items-center gap-5 w-full ${
+							showChat ? "mt-10 -mb-14 fixed bottom-16" : "fixed bottom-5"
+						}`}
+					>
 						<input
 							type="text"
 							className={`${
 								lightMode ? "border-2 border-black" : "border-none"
-							} rounded-lg px-5 outline-none font-medium w-full max-w-[80%] h-14 text-black`}
+							} rounded-lg px-5 outline-none font-medium w-full max-w-[60%] h-14 text-black`}
 							value={searchText}
 							onChange={(e) => setSearchText(e.target.value)}
 							onKeyUp={(e) => e.key === "Enter" && handleSearch()}
@@ -113,6 +118,7 @@ const App = () => {
 							<IoSend size={32} onClick={handleSearch} />
 						</div>
 					</div>
+					{/* good  */}
 				</div>
 			</div>
 			<GiHamburgerMenu
@@ -126,3 +132,26 @@ const App = () => {
 };
 
 export default App;
+
+{
+	/* <div className="flex justify-center sm:justify-start items-center gap-5 mt-5">
+	<input
+		type="text"
+		className={`${
+			lightMode ? "border-2 border-black" : "border-none"
+		} rounded-lg px-5 outline-none font-medium w-full max-w-[80%] h-14 text-black`}
+		value={searchText}
+		onChange={(e) => setSearchText(e.target.value)}
+		onKeyUp={(e) => e.key === "Enter" && handleSearch()}
+		disabled={inputDisabled}
+	/>
+	<div className="flex items-center gap-5 cursor-pointer">
+		{lightMode ? (
+			<MdDarkMode size={32} onClick={handleToggleLightMode} />
+		) : (
+			<MdOutlineDarkMode size={32} onClick={handleToggleLightMode} />
+		)}
+		<IoSend size={32} onClick={handleSearch} />
+	</div>
+</div>; */
+}
